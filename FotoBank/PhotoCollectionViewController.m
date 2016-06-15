@@ -8,7 +8,8 @@
 
 #import "PhotoCollectionViewController.h"
 
-@interface PhotoCollectionViewController ()
+@interface PhotoCollectionViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@property(strong, nonatomic) UIImagePickerController *imagePicker;
 
 @end
 
@@ -18,11 +19,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
+
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
@@ -43,28 +40,43 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 */
 - (IBAction)cameraButtonSelected:(UIBarButtonItem *)sender {
+    
+    [self presentCamera];
+}
+
+-(void)presentCamera {
+    _imagePicker = [[UIImagePickerController alloc] init];
+    [_imagePicker setDelegate:self];
+    [_imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:_imagePicker animated:true completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    NSData *imageData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1);
+    
+    UIImage *image = [UIImage imageWithData:imageData];
+    NSLog(@"image: %@", image);
+    
+    [self dismissViewControllerAnimated:true completion:nil];
+    
 }
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
 
-    
-    // Configure the cell
-    
     return cell;
 }
 
