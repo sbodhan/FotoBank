@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		437F2AC91D119CD300EE42DC /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F2AC81D119CD300EE42DC /* Image.m */; };
 		B812441D1D11941100FAE52C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441C1D11941100FAE52C /* main.m */; };
 		B81244201D11941100FAE52C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441F1D11941100FAE52C /* AppDelegate.m */; };
 		B81244261D11941100FAE52C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81244241D11941100FAE52C /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		437F2AC71D119CD300EE42DC /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		437F2AC81D119CD300EE42DC /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		B81244181D11941100FAE52C /* FotoBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FotoBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B812441C1D11941100FAE52C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B812441E1D11941100FAE52C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		437F2ACA1D119CDB00EE42DC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				437F2AC71D119CD300EE42DC /* Image.h */,
+				437F2AC81D119CD300EE42DC /* Image.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		B812440F1D11941100FAE52C = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +76,7 @@
 				B812441E1D11941100FAE52C /* AppDelegate.h */,
 				B812441F1D11941100FAE52C /* AppDelegate.m */,
 				B81244241D11941100FAE52C /* Main.storyboard */,
+				437F2ACA1D119CDB00EE42DC /* Models */,
 				B81244271D11941100FAE52C /* Assets.xcassets */,
 				B81244291D11941100FAE52C /* LaunchScreen.storyboard */,
 				B812442C1D11941100FAE52C /* Info.plist */,
@@ -166,6 +179,7 @@
 				B81244201D11941100FAE52C /* AppDelegate.m in Sources */,
 				B81244371D1198F800FAE52C /* PhotoDetailViewController.m in Sources */,
 				B812441D1D11941100FAE52C /* main.m in Sources */,
+				437F2AC91D119CD300EE42DC /* Image.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +328,7 @@
 				B81244311D11941100FAE52C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
