@@ -42,6 +42,8 @@ static NSString * const reuseIdentifier = @"Cell";
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)cameraButtonSelected:(UIBarButtonItem *)sender {
+}
 
 #pragma mark <UICollectionViewDataSource>
 
