@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4377C7A01D11AF3A00AAC885 /* progamming.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4377C79F1D11AF3A00AAC885 /* progamming.jpg */; };
 		437F2AC91D119CD300EE42DC /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F2AC81D119CD300EE42DC /* Image.m */; };
 		46490B2C1799C7043BFDF1C8 /* libPods-FotoBank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3495E52479AD5B6324F1079 /* libPods-FotoBank.a */; };
 		B812441D1D11941100FAE52C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441C1D11941100FAE52C /* main.m */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4377C79F1D11AF3A00AAC885 /* progamming.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = progamming.jpg; sourceTree = "<group>"; };
 		437F2AC71D119CD300EE42DC /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		437F2AC81D119CD300EE42DC /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		52FA0825325C2903A8902580 /* Pods-FotoBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FotoBank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FotoBank/Pods-FotoBank.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		B812441A1D11941100FAE52C /* FotoBank */ = {
 			isa = PBXGroup;
 			children = (
+				4377C79F1D11AF3A00AAC885 /* progamming.jpg */,
 				B812441E1D11941100FAE52C /* AppDelegate.h */,
 				B812441F1D11941100FAE52C /* AppDelegate.m */,
 				B81244241D11941100FAE52C /* Main.storyboard */,
@@ -189,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4377C7A01D11AF3A00AAC885 /* progamming.jpg in Resources */,
 				B812442B1D11941100FAE52C /* LaunchScreen.storyboard in Resources */,
 				B81244281D11941100FAE52C /* Assets.xcassets in Resources */,
 				B81244261D11941100FAE52C /* Main.storyboard in Resources */,
