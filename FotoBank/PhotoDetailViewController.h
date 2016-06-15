@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PhotoDetailViewController.h
 //  FotoBank
 //
 //  Created by Srinivas Bodhanampati on 6/15/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface PhotoDetailViewController : UIViewController
 
 @end
-
