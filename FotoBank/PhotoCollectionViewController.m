@@ -21,11 +21,11 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     _firebaseStorage = [FIRStorage storage];
-    
+//    [self createReference];
     // Do any additional setup after loading the view.
 }
 
@@ -43,6 +43,26 @@ static NSString * const reuseIdentifier = @"Cell";
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)createReference {
+    FIRStorageReference *storageRef = [[FIRStorage storage] referenceForURL:@"gs://project-7554510663044291640.appspot.com"];
+    // Points to "images"
+    FIRStorageReference *imagesRef = [storageRef child:@"images"];
+    
+    // Points to "images/space.jpg"
+    // Note that you can use variables to create child values
+    NSString *fileName = @"space.jpg";
+    FIRStorageReference *spaceRef = [imagesRef child:fileName];
+    
+    // File path is "images/space.jpg"
+//    NSString *path = spaceRef.fullPath;
+    
+    // File name is "space.jpg"
+//    NSString *name = spaceRef.name;
+    
+    // Points to "images"
+//    FIRStorageReference *imagesRef = [spaceRef parent];
+}
 - (IBAction)cameraButtonSelected:(UIBarButtonItem *)sender {
     
     [self presentCamera];
@@ -53,11 +73,70 @@ static NSString * const reuseIdentifier = @"Cell";
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"error" message:@"Camera is not available on simulator" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         
+        
+        
+        FIRStorageReference *storageRef = [[FIRStorage storage] referenceForURL:@"gs://project-7554510663044291640.appspot.com"];
+        FIRStorageReference *imagesRef = [storageRef child:@"images"];
+        
+        NSURL *baseURL = [NSURL URLWithString:@"file:///Users/DetroitLabs/Documents/delta/classwork/FotoBank/FotoBank/Assets.xcassets"];
+         NSLog(@"fileUrlwith path = %@", baseURL);
+        NSURL *localFile = [NSURL fileURLWithPath:@"catgram.imageset/9903c7c14add3fd0758b7b5b80c24d48101f296f13ce34736799a82c71f61bc2.jpg" relativeToURL:baseURL];
+        NSLog(@"fileUrlwithstring = %@", localFile);
+        
+        // Create the file metadata
+        FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc] init];
+        metadata.contentType = @"image/jpeg";
+        
+        // Upload file and metadata to the object 'images/mountains.jpg'
+        FIRStorageUploadTask *uploadTask = [imagesRef putFile:localFile metadata:metadata];
+        
+        // Listen for state changes, errors, and completion of the upload.
+        [uploadTask observeStatus:FIRStorageTaskStatusResume handler:^(FIRStorageTaskSnapshot *snapshot) {
+            // Upload resumed, also fires when the upload starts
+        }];
+        
+        [uploadTask observeStatus:FIRStorageTaskStatusPause handler:^(FIRStorageTaskSnapshot *snapshot) {
+            // Upload paused
+        }];
+        
+        [uploadTask observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
+            // Upload reported progress
+            double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
+        }];
+        
+        [uploadTask observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
+            // Upload completed successfully
+            NSLog(@"WOW");
+        }];
+        
+        // Errors only occur in the "Failure" case
+        [uploadTask observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
+            if (snapshot.error != nil) {
+                switch (snapshot.error.code) {
+                    case FIRStorageErrorCodeObjectNotFound:
+                        // File doesn't exist
+                        break;
+                        
+                    case FIRStorageErrorCodeUnauthorized:
+                        // User doesn't have permission to access file
+                        break;
+                        
+                    case FIRStorageErrorCodeCancelled:
+                        // User canceled the upload
+                        break;
+                        
+                    case FIRStorageErrorCodeUnknown:
+                        // Unknown error occurred, inspect the server response
+                        break;
+                }
+            }
+        }];
         /*
          
          do firebase actions with dummy data
          
          */
+        NSLog(@"Done");
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
