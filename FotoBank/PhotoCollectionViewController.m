@@ -45,26 +45,10 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)presentCamera {
-#if TARGET_IPHONE_SIMULATOR
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"error" message:@"Camera is not available on simulator" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        /*
-        
-         do firebase actions with dummy data
-         
-         */
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
-#elif TARGET_OS_IPHONE
     _imagePicker = [[UIImagePickerController alloc] init];
     [_imagePicker setDelegate:self];
     [_imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
     [self presentViewController:_imagePicker animated:true completion:nil];
-#endif
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
