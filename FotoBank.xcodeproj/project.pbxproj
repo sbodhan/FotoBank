@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		437F2AC91D119CD300EE42DC /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F2AC81D119CD300EE42DC /* Image.m */; };
+		46490B2C1799C7043BFDF1C8 /* libPods-FotoBank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3495E52479AD5B6324F1079 /* libPods-FotoBank.a */; };
 		B812441D1D11941100FAE52C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441C1D11941100FAE52C /* main.m */; };
 		B81244201D11941100FAE52C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441F1D11941100FAE52C /* AppDelegate.m */; };
 		B81244261D11941100FAE52C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81244241D11941100FAE52C /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* Begin PBXFileReference section */
 		437F2AC71D119CD300EE42DC /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		437F2AC81D119CD300EE42DC /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		52FA0825325C2903A8902580 /* Pods-FotoBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FotoBank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FotoBank/Pods-FotoBank.debug.xcconfig"; sourceTree = "<group>"; };
+		995E3A78DC0A5ABCD21195DE /* Pods-FotoBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FotoBank.release.xcconfig"; path = "Pods/Target Support Files/Pods-FotoBank/Pods-FotoBank.release.xcconfig"; sourceTree = "<group>"; };
 		B81244181D11941100FAE52C /* FotoBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FotoBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B812441C1D11941100FAE52C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B812441E1D11941100FAE52C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		B81244331D1198E000FAE52C /* PhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewController.m; sourceTree = "<group>"; };
 		B81244351D1198F800FAE52C /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
 		B81244361D1198F800FAE52C /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
+		C3495E52479AD5B6324F1079 /* libPods-FotoBank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FotoBank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,12 +43,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46490B2C1799C7043BFDF1C8 /* libPods-FotoBank.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		168EDC61869DD43D5DEBBAD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3495E52479AD5B6324F1079 /* libPods-FotoBank.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		437F2ACA1D119CDB00EE42DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +67,22 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		5E945BA5E3AFDBDDB3CE6214 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				52FA0825325C2903A8902580 /* Pods-FotoBank.debug.xcconfig */,
+				995E3A78DC0A5ABCD21195DE /* Pods-FotoBank.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B812440F1D11941100FAE52C = {
 			isa = PBXGroup;
 			children = (
 				B812441A1D11941100FAE52C /* FotoBank */,
 				B81244191D11941100FAE52C /* Products */,
+				5E945BA5E3AFDBDDB3CE6214 /* Pods */,
+				168EDC61869DD43D5DEBBAD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B812442F1D11941100FAE52C /* Build configuration list for PBXNativeTarget "FotoBank" */;
 			buildPhases = (
+				EA833A85E7F5FD9478E9AB36 /* 📦 Check Pods Manifest.lock */,
 				B81244141D11941100FAE52C /* Sources */,
 				B81244151D11941100FAE52C /* Frameworks */,
 				B81244161D11941100FAE52C /* Resources */,
+				149C289EA90DA756060E0079 /* 📦 Embed Pods Frameworks */,
+				8788B1F4525C72FCAFD2F201 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,6 +196,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		149C289EA90DA756060E0079 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FotoBank/Pods-FotoBank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8788B1F4525C72FCAFD2F201 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FotoBank/Pods-FotoBank-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA833A85E7F5FD9478E9AB36 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B81244141D11941100FAE52C /* Sources */ = {
@@ -289,6 +364,7 @@
 		};
 		B81244301D11941100FAE52C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52FA0825325C2903A8902580 /* Pods-FotoBank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FotoBank/Info.plist;
@@ -300,6 +376,7 @@
 		};
 		B81244311D11941100FAE52C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 995E3A78DC0A5ABCD21195DE /* Pods-FotoBank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FotoBank/Info.plist;
