@@ -1,6 +1,10 @@
 PODS:
+  - Firebase (3.2.1):
+    - Firebase/Core (= 3.2.1)
   - Firebase/Analytics (3.2.1):
     - FirebaseAnalytics (= 3.2.0)
+  - Firebase/Core (3.2.1):
+    - Firebase/Analytics (= 3.2.1)
   - Firebase/Storage (3.2.1):
     - Firebase/Analytics (= 3.2.1)
     - FirebaseStorage (= 1.0.1)
@@ -22,6 +26,7 @@ PODS:
     - GoogleSymbolUtilities (~> 1.0)
 
 DEPENDENCIES:
+  - Firebase
   - Firebase/Storage
 
 SPEC CHECKSUMS:
@@ -34,6 +39,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-PODFILE CHECKSUM: d00a322b627e1c37f7944a03098de93082ebf55c
+PODFILE CHECKSUM: f32d70b0e566e80751581644c1f7583f73c6b726
 
 COCOAPODS: 1.0.0
