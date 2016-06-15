@@ -7,9 +7,11 @@
 //
 
 #import "PhotoCollectionViewController.h"
+#import "Firebase/Firebase.h"
 
 @interface PhotoCollectionViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property(strong, nonatomic) UIImagePickerController *imagePicker;
+@property (strong, nonatomic) FIRStorage *firebaseStorage;
 
 @end
 
@@ -21,6 +23,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
 
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    _firebaseStorage = [FIRStorage storage];
     
     // Do any additional setup after loading the view.
 }
