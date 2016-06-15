@@ -12,6 +12,8 @@
 @interface PhotoCollectionViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property(strong, nonatomic) UIImagePickerController *imagePicker;
 @property (strong, nonatomic) FIRStorage *firebaseStorage;
+@property(strong, nonatomic) FIRStorageReference *fbStorageRef;
+@property(strong, nonatomic) NSURL *downloadURL;
 
 @end
 
@@ -22,9 +24,11 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     _firebaseStorage = [FIRStorage storage];
+    _fbStorageRef = [_firebaseStorage referenceForURL:@"gs://project-7554510663044291640.appspot.com"];
     
     // Do any additional setup after loading the view.
 }
@@ -59,10 +63,25 @@ static NSString * const reuseIdentifier = @"Cell";
     
     NSData *imageData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1);
     
-    UIImage *image = [UIImage imageWithData:imageData];
-    NSLog(@"image: %@", image);
-    
+    //upload image to firebase function called and passed the NSData we get back from taking photo with camera.
+    [self uploadImageToFirebase:imageData];
+
     [self dismissViewControllerAnimated:true completion:nil];
+    
+}
+
+//Function that takes an NSData object and then stores that in Firebase's Storage.
+-(void)uploadImageToFirebase:(NSData *)imageData {
+    FIRStorageReference *imagesRef = [_fbStorageRef child:@"images/newImage.jpg"];
+    FIRStorageUploadTask *uploadTask = [imagesRef putData:imageData metadata:nil completion:^(FIRStorageMetadata *metadata, NSError *error) {
+        if (error != nil) {
+            NSLog(@"ERROR: %@", error.description);
+        } else {
+            // Metadata contains file metadata such as size, content-type, and download URL.
+            _downloadURL = metadata.downloadURL;
+        }
+    }];
+    [uploadTask resume];
     
 }
 
@@ -83,6 +102,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
     return cell;
 }
+
+
 
 #pragma mark <UICollectionViewDelegate>
 
