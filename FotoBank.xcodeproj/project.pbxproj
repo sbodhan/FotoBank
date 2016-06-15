@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		B812441D1D11941100FAE52C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441C1D11941100FAE52C /* main.m */; };
 		B81244201D11941100FAE52C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B812441F1D11941100FAE52C /* AppDelegate.m */; };
-		B81244231D11941100FAE52C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81244221D11941100FAE52C /* ViewController.m */; };
 		B81244261D11941100FAE52C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81244241D11941100FAE52C /* Main.storyboard */; };
 		B81244281D11941100FAE52C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B81244271D11941100FAE52C /* Assets.xcassets */; };
 		B812442B1D11941100FAE52C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B81244291D11941100FAE52C /* LaunchScreen.storyboard */; };
+		B81244341D1198E000FAE52C /* PhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81244331D1198E000FAE52C /* PhotoCollectionViewController.m */; };
+		B81244371D1198F800FAE52C /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B81244361D1198F800FAE52C /* PhotoDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +21,14 @@
 		B812441C1D11941100FAE52C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B812441E1D11941100FAE52C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B812441F1D11941100FAE52C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B81244211D11941100FAE52C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B81244221D11941100FAE52C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B81244251D11941100FAE52C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B81244271D11941100FAE52C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B812442A1D11941100FAE52C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B812442C1D11941100FAE52C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B81244321D1198E000FAE52C /* PhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewController.h; sourceTree = "<group>"; };
+		B81244331D1198E000FAE52C /* PhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewController.m; sourceTree = "<group>"; };
+		B81244351D1198F800FAE52C /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
+		B81244361D1198F800FAE52C /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +63,12 @@
 			children = (
 				B812441E1D11941100FAE52C /* AppDelegate.h */,
 				B812441F1D11941100FAE52C /* AppDelegate.m */,
-				B81244211D11941100FAE52C /* ViewController.h */,
-				B81244221D11941100FAE52C /* ViewController.m */,
 				B81244241D11941100FAE52C /* Main.storyboard */,
 				B81244271D11941100FAE52C /* Assets.xcassets */,
 				B81244291D11941100FAE52C /* LaunchScreen.storyboard */,
 				B812442C1D11941100FAE52C /* Info.plist */,
 				B812441B1D11941100FAE52C /* Supporting Files */,
+				B81244381D1198FE00FAE52C /* Controllers */,
 			);
 			path = FotoBank;
 			sourceTree = "<group>";
@@ -77,6 +79,17 @@
 				B812441C1D11941100FAE52C /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B81244381D1198FE00FAE52C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B81244321D1198E000FAE52C /* PhotoCollectionViewController.h */,
+				B81244331D1198E000FAE52C /* PhotoCollectionViewController.m */,
+				B81244351D1198F800FAE52C /* PhotoDetailViewController.h */,
+				B81244361D1198F800FAE52C /* PhotoDetailViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +162,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B81244231D11941100FAE52C /* ViewController.m in Sources */,
+				B81244341D1198E000FAE52C /* PhotoCollectionViewController.m in Sources */,
 				B81244201D11941100FAE52C /* AppDelegate.m in Sources */,
+				B81244371D1198F800FAE52C /* PhotoDetailViewController.m in Sources */,
 				B812441D1D11941100FAE52C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
