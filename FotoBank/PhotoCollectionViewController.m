@@ -23,13 +23,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     _firebaseStorage = [FIRStorage storage];
+
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     _fbStorageRef = [_firebaseStorage referenceForURL:@"gs://project-7554510663044291640.appspot.com"];
-    
     // Do any additional setup after loading the view.
 }
 
@@ -47,23 +47,80 @@ static NSString * const reuseIdentifier = @"Cell";
     // Pass the selected object to the new view controller.
 }
 */
+
+
 - (IBAction)cameraButtonSelected:(UIBarButtonItem *)sender {
     
     [self presentCamera];
 }
+- (void)hackyUpload{
+    
+    FIRStorageReference *imagesRef = [_fbStorageRef child:@"images/new.jpg"];
+    
+    NSURL *baseURL = [NSURL URLWithString:@"file:///Users/DetroitLabs/Documents/delta/classwork/FotoBank/FotoBank/Assets.xcassets/catgram.imageset/9903c7c14add3fd0758b7b5b80c24d48101f296f13ce34736799a82c71f61bc2.jpg"];
+    NSLog(@"fileUrlwith path = %@", baseURL);
+    FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc] init];
+    
+    metadata.contentType = @"image/jpeg";
+    //timestamp create
+    NSDate *timestamp = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"mm-dd-yyyy  hh:ss"];
+    NSString *stringFromDate = [formatter stringFromDate:timestamp];
+    
+    metadata.customMetadata = @{@"caption":@"LOOK AT THE CAT",@"time created":stringFromDate};
+    // Upload file and metadata to the object 'images/mountains.jpg'
+    FIRStorageUploadTask *uploadTask = [imagesRef putFile:baseURL metadata:metadata];
+    
+    // Listen for state changes, errors, and completion of the upload.
+    [uploadTask observeStatus:FIRStorageTaskStatusResume handler:^(FIRStorageTaskSnapshot *snapshot) {
+        // Upload resumed, also fires when the upload starts
+    }];
+    
+    [uploadTask observeStatus:FIRStorageTaskStatusPause handler:^(FIRStorageTaskSnapshot *snapshot) {
+        // Upload paused
+    }];
+    
+    [uploadTask observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
+        // Upload reported progress
+        double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
+    }];
+    
+    [uploadTask observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
+        // Upload completed successfully
+        NSLog(@"Upload finished");
+    }];
+    
+    // Errors only occur in the "Failure" case
+    [uploadTask observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
+        if (snapshot.error != nil) {
+            switch (snapshot.error.code) {
+                case FIRStorageErrorCodeObjectNotFound:
+                    // File doesn't exist
+                    break;
+                    
+                case FIRStorageErrorCodeUnauthorized:
+                    // User doesn't have permission to access file
+                    break;
+                    
+                case FIRStorageErrorCodeCancelled:
+                    // User canceled the upload
+                    break;
+                    
+                case FIRStorageErrorCodeUnknown:
+                    // Unknown error occurred, inspect the server response
+                    break;
+            }
+        }
+    }];
 
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)presentCamera {
 #if TARGET_IPHONE_SIMULATOR
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"error" message:@"Camera is not available on simulator" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        /*
-         
-         do firebase actions with dummy data
-         
-         */
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self hackyUpload];
     }];
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:nil];
