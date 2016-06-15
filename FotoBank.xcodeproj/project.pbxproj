@@ -100,12 +100,12 @@
 				B812441E1D11941100FAE52C /* AppDelegate.h */,
 				B812441F1D11941100FAE52C /* AppDelegate.m */,
 				B81244241D11941100FAE52C /* Main.storyboard */,
+				B81244381D1198FE00FAE52C /* Controllers */,
 				437F2ACA1D119CDB00EE42DC /* Models */,
 				B81244271D11941100FAE52C /* Assets.xcassets */,
 				B81244291D11941100FAE52C /* LaunchScreen.storyboard */,
 				B812442C1D11941100FAE52C /* Info.plist */,
 				B812441B1D11941100FAE52C /* Supporting Files */,
-				B81244381D1198FE00FAE52C /* Controllers */,
 			);
 			path = FotoBank;
 			sourceTree = "<group>";
